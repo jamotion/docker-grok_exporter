@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-LABEL Maintainer="Pedro Lobo <https://github.com/pslobo>"
+LABEL Maintainer="Renzo Meister <rm@jamotion.ch>"
 LABEL Name="grok_exporter"
 LABEL Version="0.2.5"
 
@@ -19,6 +19,7 @@ RUN apt-get update -qqy \
        wget unzip ca-certificates \
     && rm -fr /var/lib/apt/lists/*
 
+RUN mkdir -p /etc/grok
 WORKDIR /grok
 
-CMD ["./grok_exporter", "-config", "/grok/config.yml"]   
+CMD ["./grok_exporter", "-config", "/etc/grok/config.yml"]   
